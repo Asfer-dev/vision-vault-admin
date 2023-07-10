@@ -2,10 +2,10 @@
 import "./globals.css";
 import { SessionProvider } from "next-auth/react";
 
-export const metadata = {
-  title: "Admin - Vision Vault",
-  description: "Vision Vault Store Admin",
-};
+// export const metadata = {
+//   title: "Admin - Vision Vault",
+//   description: "Vision Vault Store Admin",
+// };
 
 export default function RootLayout({ session, children }) {
   return (
