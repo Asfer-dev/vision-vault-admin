@@ -1,17 +1,23 @@
+"use client";
 import "./globals.css";
-import { Inter } from "next/font/google";
-
-const inter = Inter({ subsets: ["latin"] });
+import { SessionProvider } from "next-auth/react";
 
 export const metadata = {
   title: "Admin - Vision Vault",
   description: "Vision Vault Store Admin",
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ session, children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </head>
+      <SessionProvider session={session}>
+        <body className="min-h-screen bg-neutral-100/50 font-body">
+          {children}
+        </body>
+      </SessionProvider>
     </html>
   );
 }

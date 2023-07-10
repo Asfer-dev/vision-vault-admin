@@ -1,5 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600&family=Inter:wght@400;500&family=Poppins:wght@400;500&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+
+.shadow-spread:hover {
+  box-shadow: 2px 2px 12px 2px rgba(0,0,0,0.2);
+-webkit-box-shadow: 2px 2px 12px 2px rgba(0,0,0,0.2);
+-moz-box-shadow: 2px 2px 12px 2px rgba(0,0,0,0.2);
+}
+
+.logo {
+    font-family: 'Exo 2', sans-serif;
+}
+
+input,
+select,
+textarea {
+    @apply border border-neutral-300 rounded-sm px-3 py-2 w-full mb-2
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    @apply outline-accent
+}
+
+.page-heading {
+    @apply text-2xl font-medium mb-4;
+}
+
+.btn-primary {
+    @apply px-4 py-1 bg-blue-600 hover:bg-blue-700 transition text-white rounded-sm
+}
+.btn-secondary {
+    @apply text-gray-800 bg-white px-4 py-1 rounded-sm border border-gray-200 shadow-sm
+  }
+  .btn-red {
+    @apply bg-red-200 text-red-600 px-4 py-1 rounded-sm shadow-sm
+  }
+  
+  table .btn-edit {
+    @apply btn-secondary text-sm flex gap-1 items-center
+  }
+  
+  table button.btn-delete {
+    @apply btn-red text-sm flex gap-1 items-center
+  }
+  
+  table.basic {
+    @apply w-full text-black bg-white rounded-sm shadow-md
+  }
+  
+  table.basic td {
+    @apply px-4 py-1
+  }
+  
+  table.basic thead td {
+    @apply  text-gray-600 text-sm uppercase px-4 py-2
+  }
+  
+  table.basic thead {
+    @apply border-b border-gray-200
+  }
 
