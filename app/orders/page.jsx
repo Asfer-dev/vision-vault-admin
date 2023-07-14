@@ -17,7 +17,7 @@ export default function Orders() {
     const fetchOrders = async () => {
       setLoading(true);
       try {
-        const response = await fetch("/api/order");
+        const response = await fetch("/api/order", { cache: "no-store" });
         const data = await response.json();
         setOrders(data);
       } catch (error) {

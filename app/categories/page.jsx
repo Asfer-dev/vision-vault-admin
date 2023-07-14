@@ -13,7 +13,7 @@ export default function Categories() {
     setLoading(true);
 
     try {
-      const response = await fetch("/api/category");
+      const response = await fetch("/api/category", { cache: "no-store" });
       const data = await response.json();
       setCategories(data);
     } catch (error) {
@@ -66,7 +66,9 @@ export default function Categories() {
   const enableEdit = async (id) => {
     setIsEditing(true);
     try {
-      const response = await fetch("/api/category/" + id);
+      const response = await fetch("/api/category/" + id, {
+        cache: "no-store",
+      });
       const data = await response.json();
       setCategory(data);
     } catch (error) {

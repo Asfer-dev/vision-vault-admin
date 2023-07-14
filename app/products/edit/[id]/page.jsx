@@ -21,7 +21,9 @@ export default function EditProduct() {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await fetch("/api/product/" + id);
+        const response = await fetch("/api/product/" + id, {
+          cache: "no-store",
+        });
         const data = await response.json();
         setProduct(data);
       } catch (error) {

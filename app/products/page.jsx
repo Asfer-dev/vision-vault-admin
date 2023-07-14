@@ -15,7 +15,7 @@ export default function Products() {
       setLoading(true);
 
       try {
-        const response = await fetch("/api/product");
+        const response = await fetch("/api/product", { cache: "no-store" });
         const data = await response.json();
         setProducts(data);
       } catch (error) {
