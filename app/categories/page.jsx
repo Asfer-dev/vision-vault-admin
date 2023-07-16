@@ -5,6 +5,8 @@ import { IconDelete, IconEdit } from "@lib/icons";
 import { useEffect, useState } from "react";
 import { MoonLoader } from "react-spinners";
 
+export const dynamic = "force-dynamic";
+
 export default function Categories() {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -13,7 +15,7 @@ export default function Categories() {
     setLoading(true);
 
     try {
-      const response = await fetch("/api/category", { cache: "no-store" });
+      const response = await fetch("/api/category", { cache: "no-cache" });
       const data = await response.json();
       setCategories(data);
     } catch (error) {
@@ -67,7 +69,7 @@ export default function Categories() {
     setIsEditing(true);
     try {
       const response = await fetch("/api/category/" + id, {
-        cache: "no-store",
+        cache: "no-cache",
       });
       const data = await response.json();
       setCategory(data);

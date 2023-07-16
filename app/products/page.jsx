@@ -6,6 +6,8 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { MoonLoader } from "react-spinners";
 
+export const dynamic = "force-dynamic";
+
 export default function Products() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -15,7 +17,7 @@ export default function Products() {
     setLoading(true);
 
     try {
-      const response = await fetch("/api/product", { cache: "no-store" });
+      const response = await fetch("/api/product", { cache: "no-cache" });
       const data = await response.json();
       setProducts(data);
     } catch (error) {
@@ -28,7 +30,7 @@ export default function Products() {
     setLoading(true);
 
     try {
-      const response = await fetch("/api/product", { cache: "no-store" });
+      const response = await fetch("/api/product", { cache: "no-cache" });
       const data = await response.json();
       return data;
     } catch (error) {
@@ -83,10 +85,11 @@ export default function Products() {
         Add new product
       </Link>
 
-      {/* FILTER */}
+      {/* FILTERS */}
       <div className="mt-4">
         <label>Filter:</label>
         <div className="flex gap-2 sm:w-1/2">
+          {/* CATEGORY FILTER */}
           <div className="flex items-center gap-1 w-full">
             <label>Category:</label>
             <select
@@ -109,6 +112,8 @@ export default function Products() {
               ))}
             </select>
           </div>
+
+          {/* GENDER FILTER */}
           <div className="flex items-center gap-1 w-full">
             <label>Gender:</label>
             <select
