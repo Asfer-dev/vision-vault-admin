@@ -6,11 +6,20 @@ import Nav from "@components/Nav";
 import Link from "next/link";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { IconClose, IconHamburger } from "@lib/icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { ClipLoader } from "react-spinners";
 
 export default function PageLayout({ children }) {
   const [showNav, setShowNav] = useState(false);
+  const [loading, setLoading] = useState(true);
   const { data: session } = useSession();
+
+  // const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 2000);
+  }, []);
+
   return !session ? (
     <main className="min-h-screen bg-accent">
       <div className="flex flex-col gap-8 items-center justify-center h-screen w-screen">
@@ -26,12 +35,16 @@ export default function PageLayout({ children }) {
           </div>{" "}
           Admin
         </h1>
-        <button
-          onClick={() => signIn("google")}
-          className="text-2xl font-medium shadow-spread transition bg-white px-12 py-3 rounded-sm"
-        >
-          Log In
-        </button>
+        {loading ? (
+          <ClipLoader color="#fff" />
+        ) : (
+          <button
+            onClick={() => signIn("google")}
+            className="text-2xl font-medium shadow-spread transition bg-white px-12 py-3 rounded-sm"
+          >
+            Log In
+          </button>
+        )}
       </div>
     </main>
   ) : (
